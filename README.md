@@ -57,7 +57,24 @@ Make sure you have the following installed:
     PUT /api/posts/<id>/ - Update a specific blog post (requires authentication)
     DELETE /api/posts/<id>/ - Delete a specific blog post (requires authentication)
 
-5. Authentication
+   Generate the Token: You can generate a token using the Django shell:
+
+5. python manage.py shell
+   
+   Run the following commands in the shell:
+   from django.contrib.auth.models import User
+   from rest_framework.authtoken.models import Token
+
+   # Replace 'username' with the actual username
+   user = User.objects.get(username='your_username')  
+   token, created = Token.objects.get_or_create(user=user)
+   print(token.key)  # This will display the token
+   Use the Token: Use the token in your API requests by including it in the header:
+
+
+   curl -H "Authorization: Token your_token_here" http://127.0.0.1:8000/api/posts/
+
+6. Authentication
     This application uses token-based authentication. To obtain a token, you can register a new user or use the       existing users through the Django admin interface. Include the token in your request headers as follows:
 
 
