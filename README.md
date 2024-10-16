@@ -116,7 +116,3 @@ You can generate a token using the Django shell:
    ```bash
    curl -X DELETE -H "Authorization: Token <your_token>" http://127.0.0.1:8000/api/posts/<id>/
    ```
-
-## License
-
-This project is licensed under the MIT License.
